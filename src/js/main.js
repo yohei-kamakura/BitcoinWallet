@@ -14,16 +14,8 @@ $(function() {
 				confirmations: 0
 			}
 		}).done(function(res) {
-			console.log("balance done!");
-			console.log("res:");
-			console.log(res);
 			return res;
 		}).fail(function(jqXHR, textStatus) {
-			console.log("balance fail!");
-			console.log("jqXHR:");
-			console.log(jqXHR);
-			console.log("textStatus:");
-			console.log(textStatus);
 			return null;
 		});
 	}
@@ -37,16 +29,8 @@ $(function() {
 				unconfirmed: 1
 			}
 		}).done(function(res) {
-			console.log("unspent done!");
-			console.log("res:");
-			console.log(res);
 			return res;
 		}).fail(function(jqXHR, textStatus) {
-			console.log("unspent fail!");
-			console.log("jqXHR:");
-			console.log(jqXHR);
-			console.log("textStatus:");
-			console.log(textStatus);
 			return null;
 		});
 	}
@@ -83,7 +67,6 @@ $(function() {
 			confirmations: 0
 		}
 	}).done(function(res) {
-		console.log("balance done!");
 		var balance = res.data.balance;
 
 		$.ajax({
@@ -94,8 +77,6 @@ $(function() {
 				unconfirmed: 1
 			}
 		}).done(function(res) {
-			console.log("unspent done!");
-			console.log(res);
 			var tx = new bitcoin.TransactionBuilder();
 			tx.addInput(res.data.unspent[0].tx, res.data.unspent[0].n);
 			console.log(parseFloat(balance) * 1e8 - 1000);
@@ -111,7 +92,6 @@ $(function() {
 					hex: tx.build().toHex()
 				}
 			}).done(function(res) {
-				console.log("push done!");
 				balance(address);
 			}).fail(function(jqXHR, textStatus) {
 				console.log("push fail!");
