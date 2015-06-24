@@ -44,15 +44,9 @@ $(function() {
 				hex: tx.build().toHex()
 			}
 		}).done(function(res) {
-			console.log("push done!");
-			console.log("res:");
-			console.log(res);
+			return res;
 		}).fail(function(jqXHR, textStatus) {
-			console.log("push fail!");
-			console.log("jqXHR:");
-			console.log(jqXHR);
-			console.log("textStatus:");
-			console.log(textStatus);
+			return null;
 		});
 	}
 
